@@ -1,2 +1,2 @@
-# Yu-Inference-Stack
+# Inference Stack
 
