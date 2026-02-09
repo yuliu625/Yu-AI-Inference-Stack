@@ -1,0 +1,57 @@
+# vllm configuration file template
+## for vllm serve config
+
+# Frontend
+host: '127.0.0.1'
+port: ''
+#uvicorn-log-level: Optional[Literal['critical', 'debug', 'error', 'info', 'trace', 'warning']]
+#lora-modules: JSON Format
+
+
+# ModelConfig
+model: ''  # model name or path
+served-model-name: ''
+#dtype: Literal['auto', 'bfloat16', 'float', 'float16', 'float32', 'half']
+#quantization: Literal['auto', 'bfloat16', 'float', 'float16', 'float32', 'half']
+#trust-remote-code: True  # huggingface flag, also on-trust-remote-code
+#max-model-len: str
+
+
+# LoadConfig
+
+
+# AttentionConfig
+#attention-backend: ''
+
+
+# StructuredOutputsConfig
+
+
+# ParallelConfig
+#tensor-parallel-size: int
+
+
+# CacheConfig
+gpu-memory-utilization: float
+#kv-cache-dtype: Literal['auto', 'bfloat16', 'fp8', 'fp8_ds_mla', 'fp8_e4m3', 'fp8_e5m2', 'fp8_inc']
+
+
+# MultiModalConfig
+
+
+# LoRAConfig
+
+
+# ObservabilityConfig
+
+
+# SchedulerConfig
+#max-num-batched-tokens: str
+#max-num-seqs
+
+
+# CompilationConfig
+
+
+# VllmConfig
+
