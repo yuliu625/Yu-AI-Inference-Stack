@@ -1,0 +1,37 @@
+# litellm configuration file template
+## load key from environment variables: os.environ/<ENV-VAR> # runs os.getenv('ENV-VAR')
+
+
+model_list:
+  - model_name: str  # received model name
+    litellm_params:  # all params for litellm
+      model: str  # model name for litellm
+      api_base: str  # base url
+      api_key: os.environ/API_KEY  # os.getenv('API_KEY')
+      rpm: int  # [OPTIONAL] rate limit
+      tpm: int  # [OPTIONAL] rate limit
+      api_version: ''
+
+  # if for default model
+#  - model_name: "*"
+#    litellm_params:
+#      model: ''
+
+
+litellm_settings:
+  num_retries: int  # retry call model_name
+  request_timeout: int  # Timeout error
+#  allowed_fails: int  # cooldown
+#  drop_params: True
+#  success_callback: ['']
+
+
+# settings for the litellm proxy server
+#general_settings:
+#  routing_strategy: Literal["simple-shuffle", "least-busy", "usage-based-routing","latency-based-routing"], default="simple-shuffle"
+#  model_group_alias: dict
+#  num_retries: int
+#  timeout: int
+#  master_key: ''
+#  alerting: ['']
+
