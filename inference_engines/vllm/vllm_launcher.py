@@ -3,14 +3,23 @@ Sources:
     https://github.com/yuliu625/Yu-AI-Inference-Stack/inference_engines/vllm/vllm_launcher.py
 
 References:
-    https://docs.vllm.ai/en/stable/cli/
+    - https://docs.vllm.ai/en/stable/cli/
+    - https://docs.vllm.ai/en/stable/configuration/serve_args/
 
 Synopsis:
-    VLLM的启动器。
+    VLLM 启动器。
 
 Notes:
-    改进的 vllm 启动器。
+    改进的 vllm 启动器，基于配置文件。
 
+    在新版本的 vllm ，目前已经支持通过配置文件启动服务。
+    原始方法因独特需求，总是需要频繁修改。当前 launcher 通过解耦配置文件，启动逻辑不再进行修改。
+
+    配置文件仅是 EngineArgs 的转义，会根据需求频繁更新。
+
+    注意:
+        - CLI偏好: vllm依然偏好通过 CLI ，配置文件方法为后续提供。
+        - 覆盖优先级: vllm 的优先级是: command line > config file values > defaults 。
 """
 
 from __future__ import annotations
