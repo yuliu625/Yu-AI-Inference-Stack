@@ -1,9 +1,10 @@
 # vllm configuration file template
 ## for vllm serve config
 
+
 # Frontend
 host: '127.0.0.1'
-port: ''
+port: '8000'
 #uvicorn-log-level: Optional[Literal['critical', 'debug', 'error', 'info', 'trace', 'warning']]
 #lora-modules: JSON Format
 
