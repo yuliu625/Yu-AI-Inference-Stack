@@ -1,5 +1,8 @@
 # litellm configuration file template
 ## load key from environment variables: os.environ/<ENV-VAR> # runs os.getenv('ENV-VAR')
+# supported models and providers
+## - https://models.litellm.ai/
+## - https://docs.litellm.ai/docs/providers
 
 
 model_list:
