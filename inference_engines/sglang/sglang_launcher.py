@@ -3,7 +3,7 @@ Sources:
     https://github.com/yuliu625/Yu-AI-Inference-Stack/inference_engines/sglang/sglang_launcher.py
 
 References:
-    - https://docs.sglang.io/advanced_features/server_arguments.html
+    https://docs.sglang.io/advanced_features/server_arguments.html
 
 Synopsis:
     SGLang 启动器。
