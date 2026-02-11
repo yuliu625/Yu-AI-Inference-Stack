@@ -3,7 +3,9 @@ Sources:
     https://github.com/yuliu625/Yu-AI-Inference-Stack/gateway/litellm/litellm_proxy_launcher.py
 
 References:
-    https://docs.litellm.ai/docs/proxy/config_settings
+    - https://docs.litellm.ai/docs/proxy/config_settings
+    - https://models.litellm.ai/
+    - https://docs.litellm.ai/docs/providers
 
 Synopsis:
     litellm proxy 服务启动器。
