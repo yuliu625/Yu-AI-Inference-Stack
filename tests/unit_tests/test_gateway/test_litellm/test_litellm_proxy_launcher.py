@@ -30,9 +30,9 @@ class TestLiteLLMProxyLauncher:
             model="qwen2.5:0.5b",
             messages=[{"role": "user", "content": "What is your model id?"}]
         )
-        logger.info(f"Raw Response: \n{response}")
+        logger.info(f"Raw Ollama Response: \n{response}")
 
-    def test_litellm_llm(
+    def test_ollama_llm(
         self,
     ):
         client = OpenAI(
@@ -43,16 +43,31 @@ class TestLiteLLMProxyLauncher:
             model="ollama-llm",
             messages=[{"role": "user", "content": "What is your model id?"}]
         )
-        logger.info(f"LiteLLM Response: \n{response}")
+        logger.info(f"Ollama Response: \n{response}")
 
-    def test_litellm_embedding(
+    def test_ollama_embedding(
         self,
     ):
         embedding_model = OpenAIEmbeddings(
-            model="ollama-embedding",  # 对应你在 LiteLLM 中定义的模型名
-            base_url="http://127.0.0.1:4000",  # LiteLLM 端口
-            api_key="none",
+            model="ollama-embedding",
+            base_url="http://127.0.0.1:4000",
+            api_key='none',
         )
         embedding = embedding_model.embed_query('haha')
-        logger.info(f"LiteLLM Embedding: \n{embedding}")
+        logger.info(f"Ollama Embedding: \n{embedding}")
+
+    def test_vllm_llm(
+        self,
+    ):
+        ...
+
+    def test_vllm_embedding(
+        self,
+    ):
+        ...
+
+    def test_dashscope_llm(
+        self,
+    ):
+        ...
 
