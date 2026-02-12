@@ -1,0 +1,46 @@
+# litellm configuration file template
+## load key from environment variables: os.environ/<ENV-VAR> # runs os.getenv('ENV-VAR')
+# supported models and providers
+## - https://models.litellm.ai/
+## - https://docs.litellm.ai/docs/providers
+
+
+model_list:
+  # local llm: ollama llm
+  - model_name: ollama-llm  # received model name
+    litellm_params:  # all params for litellm
+      model: ollama/qwen2.5:0.5b  # model name for litellm
+      api_base: http://localhost:11434  # base url
+      api_key: none  # os.getenv('API_KEY')
+  # local llm: ollama embedding
+  - model_name: ollama-embedding  # received model name
+    litellm_params: # all params for litellm
+      model: ollama/nomic-embed-text:v1.5  # model name for litellm
+      api_base: http://localhost:11434  # base url
+      api_key: none  # os.getenv('API_KEY')
+      drop_params: True
+
+
+  # if for default model
+#  - model_name: "*"
+#    litellm_params:
+#      model: ''
+
+
+#litellm_settings:
+#  num_retries: int  # retry call model_name
+#  request_timeout: int  # Timeout error
+#  allowed_fails: int  # cooldown
+#  drop_params: True
+#  success_callback: ['']
+
+
+# settings for the litellm proxy server
+#general_settings:
+#  routing_strategy: Literal["simple-shuffle", "least-busy", "usage-based-routing","latency-based-routing"], default="simple-shuffle"
+#  model_group_alias: dict
+#  num_retries: int
+#  timeout: int
+#  master_key: ''
+#  alerting: ['']
+
