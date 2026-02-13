@@ -1,4 +1,4 @@
 """
-来自transformers的模型基础。
+来自 transformers 的模型基础。
 """
 
