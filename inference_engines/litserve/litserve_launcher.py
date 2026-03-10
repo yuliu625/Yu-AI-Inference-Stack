@@ -21,6 +21,29 @@ from typing import TYPE_CHECKING
 # if TYPE_CHECKING:
 
 
+class HFLitAPI(ls.LitAPI):
+    def setup(self, device) -> None:
+        """这里的定义是为了在 predict 方法中使用。"""
+
+    def decode_request(self, request, **kwargs):
+        ...
+
+    def predict(self, x, **kwargs):
+        ...
+
+    def encode_response(self, output, **kwargs):
+        ...
 
 
+if __name__ == '__main__':
+    lit_api = HFLitAPI()
+    server = ls.LitServer(
+        lit_api=lit_api,
+        accelerator='auto',
+    )
+    # start server
+    server.run(
+        host='0.0.0.0',
+        port=8000,
+    )
 
