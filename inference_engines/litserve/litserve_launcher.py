@@ -49,7 +49,10 @@ class HFLitAPI(ls.LitAPI):
 
 
 if __name__ == '__main__':
-    lit_api = HFLitAPI()
+    lit_api = HFLitAPI(
+        max_batch_size=1,
+        api_path='/predict',
+    )
     server = ls.LitServer(
         lit_api=lit_api,
         accelerator='auto',
