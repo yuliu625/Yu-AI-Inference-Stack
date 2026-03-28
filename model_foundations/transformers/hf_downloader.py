@@ -76,12 +76,12 @@ class HFDownloader(HFDownloaderInterface):
         Args:
             local_model_dir (str): 本地显式存储模型仓库的文件夹路径。
             local_dataset_dir (str): 本地显式存储数据集仓库的文件夹路径。
-            cache_dir (Optional[str]): 全局自动管理的 cache directory ，非人类可读。可以不进行设置，从而使用默认目录。
+            cache_dir (Union[str, None]): 全局自动管理的 cache directory ，非人类可读。可以不进行设置，从而使用默认目录。
             is_only_torch (bool): 是否仅下载 torch 相关的文件。如果为了空间和速度，可仅下载 torch 相关，但没有运行优化。
             repo_concurrency (int): 一级，并行处理的仓库数量。
             file_concurrency (int): 二级，并行处理的文件数量。按照 python 上限可设置为 32 。
-            hf_home (Optional[str]): huggingface 的根目录。
-            hf_endpoint (Optional[str]): huggingface 的 endpoint 。
+            hf_home (Union[str, None]): huggingface 的根目录。
+            hf_endpoint (Union[str, None]): huggingface 的 endpoint 。
 
             # is_batch_download: 是否使用多线程批量下载。多线程下载现在是默认行为。
         """
@@ -106,7 +106,7 @@ class HFDownloader(HFDownloaderInterface):
     ) -> None:
         # 使用同步多线程下载。
         with ThreadPoolExecutor(max_workers=self._repo_concurrency) as executor:
-            executor.map(self.download_datasets, repo_ids)
+            executor.map(self.try_download_model_snapshot, repo_ids)
 
     # ==== 暴露方法。 ====
     def download_datasets(
@@ -115,10 +115,10 @@ class HFDownloader(HFDownloaderInterface):
     ) -> None:
         # 使用同步多线程下载。
         with ThreadPoolExecutor(max_workers=self._repo_concurrency) as executor:
-            executor.map(self.download_datasets, repo_ids)
+            executor.map(self.try_download_dataset_snapshot, repo_ids)
 
     # ==== 重要方法。 ====
-    def try_download_model(
+    def try_download_model_snapshot(
         self,
         repo_id: str,
     ) -> None:
@@ -129,7 +129,7 @@ class HFDownloader(HFDownloaderInterface):
             _is_only_torch (bool): 是否仅下载 torch 相关文件。
                 实现方法为指定常见 allow_patterns ，其他方法也可通过指定 ignore_patterns 。
             local_model_dir (Path): 本地显式存储模型仓库的文件夹路径。
-            cache_dir (Optional[Path]): 全局自动管理的 cache directory ，非人类可读。可以不进行设置，从而使用默认目录。
+            cache_dir (Union[Path, None]): 全局自动管理的 cache directory ，非人类可读。可以不进行设置，从而使用默认目录。
             _repo_concurrency (int): 一级，并行处理的仓库数量。
             _file_concurrency (int): 二级，并行处理的文件数量。按照 python 上限可设置为 32 。
 
@@ -172,7 +172,7 @@ class HFDownloader(HFDownloaderInterface):
             logger.exception(f"Model: \n{e}")
 
     # ==== 重要方法。 ====
-    def try_download_dataset(
+    def try_download_dataset_snapshot(
         self,
         repo_id: str,
     ) -> None:
@@ -180,8 +180,8 @@ class HFDownloader(HFDownloaderInterface):
         尝试从 huggingface 上下载数据集仓库。
 
         States:
-            local_dataset_dir (str): 本地显式存储数据集仓库的文件夹路径。
-            cache_dir (Optional[Path]): 全局自动管理的 cache directory ，非人类可读。可以不进行设置，从而使用默认目录。
+            local_dataset_dir (Path): 本地显式存储数据集仓库的文件夹路径。
+            cache_dir (Union[Path, None]): 全局自动管理的 cache directory ，非人类可读。可以不进行设置，从而使用默认目录。
             _repo_concurrency (int): 一级，并行处理的仓库数量。
             _file_concurrency (int): 二级，并行处理的文件数量。按照 python 上限可设置为 32 。
 
@@ -222,8 +222,8 @@ class HFDownloader(HFDownloaderInterface):
             - 可以将这个方法独立出去，但会脱离进程运行状态。
 
         Args:
-            hf_endpoint (Optional[str]): huggingface 交互 endpoint ，设置这个可修改镜像。
-            hf_home (Optional[str]): 一次性设置的 huggingface root directory 。
+            hf_endpoint (Union[str, None]): huggingface 交互 endpoint ，设置这个可修改镜像。
+            hf_home (Union[str, None]): 一次性设置的 huggingface root directory 。
 
         Returns:
             None: 完成设置并记录日志。
