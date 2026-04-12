@@ -30,11 +30,11 @@ litellm_settings:
 
 
 # settings for the litellm proxy server
-#general_settings:
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY
 #  routing_strategy: Literal["simple-shuffle", "least-busy", "usage-based-routing","latency-based-routing"], default="simple-shuffle"
 #  model_group_alias: dict
 #  num_retries: int
 #  timeout: int
-#  master_key: ''
 #  alerting: ['']
 
