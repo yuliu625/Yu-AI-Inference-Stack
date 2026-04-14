@@ -5,6 +5,9 @@
 ## - https://docs.litellm.ai/docs/providers
 
 
+#environment_variables: {}
+
+
 model_list:
   - model_name: str  # received model name
     litellm_params:  # all params for litellm
@@ -14,18 +17,27 @@ model_list:
       rpm: int  # [OPTIONAL] rate limit
       tpm: int  # [OPTIONAL] rate limit
       api_version: ''
+#    model_info:
+#      id: string
+#      mode: embedding
+#      input_cost_per_token: 0
+#      output_cost_per_token: 0
+#      max_tokens: 2048
+#      base_model: gpt-4-1106-preview
+#      additionalProp1: {}
 
-  # if for default model
+
+# if for default model
 #  - model_name: "*"
 #    litellm_params:
 #      model: ''
 
 
 litellm_settings:
+  drop_params: True
   num_retries: int  # retry call model_name
   request_timeout: int  # Timeout error
-#  allowed_fails: int  # cooldown
-#  drop_params: True
+  allowed_fails: int  # cooldown
 #  success_callback: ['']
 
 
