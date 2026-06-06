@@ -1,6 +1,6 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-AI-Inference-Stack/blob/main/modules/model_foundations/transformers/hf_download.py
+    https://github.com/yuliu625/Yu-AI-Inference-Stack/blob/main/modules/model_foundations/transformers/hf_downloader.py
 
 References:
     https://huggingface.co/docs/huggingface_hub/guides/download
@@ -42,6 +42,7 @@ class HFDownloaderInterface(ABC):
     repo_type: Literal['model', 'dataset', 'space',]
     这里必要的实现为 model 和 dataset 。
     """
+
     @abstractmethod
     def download_models(self, *args, **kwargs):
         """
@@ -61,6 +62,7 @@ class HFDownloader(HFDownloaderInterface):
 
     默认使用多线程加速下载。
     """
+
     def __init__(
         self,
         local_model_dir: str,
