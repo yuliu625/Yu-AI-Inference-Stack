@@ -1,6 +1,6 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-AI-Inference-Stack/model_foundations/torch/to_onnx.py
+    https://github.com/yuliu625/Yu-AI-Inference-Stack/blob/main/modules/model_foundations/torch/to_onnx.py
 
 References:
 
