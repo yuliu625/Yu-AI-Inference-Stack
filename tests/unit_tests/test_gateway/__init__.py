@@ -1,4 +1,4 @@
 """
-Tests for gateway.
+Tests for _gateway.
 """
 
