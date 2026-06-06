@@ -1,6 +1,6 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-AI-Inference-Stack/inference_engines/litserve/litserve_launcher.py
+    https://github.com/yuliu625/Yu-AI-Inference-Stack/blob/main/modules/inference_engines/litserve/litserve_launcher.py
 
 References:
     https://lightning.ai/docs/litserve/home
