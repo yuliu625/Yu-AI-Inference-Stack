@@ -1,6 +1,6 @@
 """
 Sources:
-    https://github.com/yuliu625/Yu-AI-Inference-Stack/model_foundations/transformers/hf_download.py
+    https://github.com/yuliu625/Yu-AI-Inference-Stack/blob/main/modules/model_foundations/transformers/hf_download.py
 
 References:
     https://huggingface.co/docs/huggingface_hub/guides/download
